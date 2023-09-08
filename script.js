@@ -112,13 +112,17 @@ function createNewsItemSmall(addressUrl, imgSrc, category, title, date) {
   newsLink.setAttribute("href", addressUrl);
   newsItemSmall.append(newsLink);
 
+  let imgDiv = document.createElement("div");
+
   let cardImgSmall = document.createElement("img");
   cardImgSmall.classList.add("card-img-small");
   cardImgSmall.src = imgSrc;
 
+  imgDiv.append(cardImgSmall);
+
   let cardContentSmall = document.createElement("div");
   cardContentSmall.classList.add("news-item-small-content");
-  newsLink.append(cardImgSmall, cardContentSmall);
+  newsLink.append(imgDiv, cardContentSmall);
 
   let newsCategory = document.createElement("span");
   newsCategory.classList.add("news-category");
