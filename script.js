@@ -414,7 +414,7 @@ let eventsContainer1 = createEventsContainer(
   `Lap`,
   `Vilnius, Lithuania & online`,
   `Big data conference europe 2023`,
-  `/images/77307444_1014197978913829_6397086150799917056_n-300x188.jpg`
+  `./images/77307444_1014197978913829_6397086150799917056_n-300x188.jpg`
 );
 
 let eventsContainer2 = createEventsContainer(
