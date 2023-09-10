@@ -16,6 +16,9 @@ let rightSide = createRightSide();
 let podcastsSection = createPodcastsSection();
 let podcastsWrap = createPodcastsWrap();
 let podcastContainer = createPodcastContainer();
+let eventsSection = createEventsSection();
+let eventsWrap = createEventsWrap();
+let eventsContainer = createEventsContainer();
 
 container.append(leftSide, rightSide);
 leftSide.append(newsSection, videosSection);
@@ -259,7 +262,7 @@ function createPodcastsWrap() {
   return podcastsWrap;
 }
 
-rightSide.append(podcastsSection, sectionTitlePodcasts, podcastsWrap);
+podcastsSection.append(sectionTitlePodcasts, podcastsWrap);
 
 function createPodcastContainer(imgSrc, playTime, title, date) {
   let podcastContainer = document.createElement("div");
@@ -340,3 +343,92 @@ podcastsWrap.append(
   podcastContainer3,
   podcastContainer4
 );
+
+function createEventsSection() {
+  let eventsSection = document.createElement("section");
+  eventsSection.classList.add("events");
+  return eventsSection;
+}
+
+let sectionTitleEvents = createSectionTitle("Renginiai");
+
+function createEventsWrap() {
+  let eventsWrap = document.createElement("div");
+  eventsWrap.classList.add("events-wrap");
+  return eventsWrap;
+}
+
+let btnToAllEvents = createBtnToAll("Daugiau");
+
+rightSide.append(podcastsSection, eventsSection);
+eventsSection.append(sectionTitleEvents, eventsWrap, btnToAllEvents);
+
+function createEventsContainer(day, month, category, title, imgSrc = "") {
+  let eventsContainer = document.createElement("div");
+  eventsContainer.classList.add("events-container");
+
+  let eventCardTop = document.createElement("div");
+  eventCardTop.classList.add("event-card-top");
+
+  let eventImg = document.createElement("img");
+  eventImg.src = imgSrc;
+
+  eventCardTop.append(eventImg);
+
+  let eventCardBottom = document.createElement("div");
+  eventCardBottom.classList.add("event-card-bottom");
+
+  let eventDate = document.createElement("div");
+  eventDate.classList.add("event-date");
+
+  let eventDay = document.createElement("div");
+  eventDay.classList.add("event-day");
+  eventDay.textContent = day;
+
+  let eventMonth = document.createElement("div");
+  eventMonth.classList.add("event-month");
+  eventMonth.textContent = month;
+
+  eventDate.append(eventDay, eventMonth);
+
+  let eventCardContent = document.createElement("div");
+  eventCardContent.classList.add("event-card-content");
+
+  let eventNewsCategory = document.createElement("span");
+  eventNewsCategory.classList.add("news-category");
+  eventNewsCategory.textContent = category;
+
+  let eventTitle = document.createElement("h3");
+  eventTitle.textContent = title;
+  eventCardContent.append(eventNewsCategory, eventTitle);
+
+  eventCardBottom.append(eventDate, eventCardContent);
+
+  eventsContainer.append(eventCardTop, eventCardBottom);
+
+  return eventsContainer;
+}
+
+let eventsContainer1 = createEventsContainer(
+  `21`,
+  `Lap`,
+  `Vilnius, Lithuania & online`,
+  `Big data conference europe 2023`,
+  `/images/77307444_1014197978913829_6397086150799917056_n-300x188.jpg`
+);
+
+let eventsContainer2 = createEventsContainer(
+  `24`,
+  `spa`,
+  `Vilnius, Lithuania & online`,
+  `Testcon europe 2023`
+);
+
+let eventsContainer3 = createEventsContainer(
+  `31`,
+  `rug`,
+  `online`,
+  `Studijos 101: karjeros pradžia su Cognizat`
+);
+
+eventsWrap.append(eventsContainer1, eventsContainer2, eventsContainer3);
